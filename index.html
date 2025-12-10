@@ -402,41 +402,72 @@
     t10: 10
   };
 
-  // Wortlisten: alle klein geschrieben
+  // Zentraler Wortschatz (neue Listen, Doppler entfernt)
   const WORDS = {
     nomen: [
-      'hund','katze','haus','schule','tisch','stuhl','fenster','buch','auto','blume',
-      'ball','garten','baum','freund','wasser','brot','apfel','lehrer','kind','strasse',
-      'uhr','bett','lampe','heft','rucksack','fahrrad','wolke','see','pause'
+      "haus","baum","mutter","vater","kind","schule","buch","stift","tisch","fenster",
+      "tür","bett","auto","fahrrad","ball","blume","sonne","mond","stern","wolke",
+      "regen","schnee","hund","katze","maus","fisch","vogel","pferd","kuh","schaf",
+      "brot","milch","wasser","apfel","banane","orange","keks","kuchen","teller","glas",
+      "messer","gabel","löffel","jacke","hose","hut","schuh","socke","hand","fuß",
+      "kopf","auge","ohr","nase","mund","haar","zahn","garten","park","straße",
+      "brücke","fluss","see","berg","tal","wald","wiese","uhr","tag","nacht",
+      "morgen","abend","jahr","monat","woche","freund","lehrer","arzt","polizist","feuer",
+      "licht","farbe","bild","lied","spiel","zahl","buchstabe","name","adresse","telefon",
+      "brief","paket","geschenk","feiertag","geburtstag","weihnachten","sommer","winter","frühling","herbst"
     ],
     verb: [
-      'laufen','springen','schreiben','lesen','singen','malen','rechnen','spielen','schlafen','trinken',
-      'essen','fahren','schwimmen','klettern','lachen','weinen','fragen','antworten','suchen','finden',
-      'oeffnen','schliessen','tragen','werfen','fangen','zeichnen','bauen','lernen','arbeiten','sitzen'
+      "gehen","spielen","lesen","schreiben","malen","lachen","springen","sehen","hören","sagen",
+      "fragen","antworten","kommen","laufen","rennen","stehen","sitzen","liegen","schlafen","träumen",
+      "essen","trinken","kochen","backen","waschen","putzen","räumen","bauen","basteln","zeichnen",
+      "rechnen","zählen","singen","tanzen","musizieren","pfeifen","klatschen","winken","zeigen","geben",
+      "nehmen","halten","tragen","bringen","holen","kaufen","verkaufen","bezahlen","öffnen","schließen",
+      "drücken","ziehen","schieben","heben","senken","drehen","biegen","brechen","reparieren","arbeiten",
+      "lernen","lehren","helfen","stören","warten","suchen","finden","verlieren","gewinnen","verstecken",
+      "entdecken","denken","glauben","wissen","kennen","verstehen","erklären","erzählen","versprechen","vergessen",
+      "erinnern","hoffen","fürchten","lieben","mögen","hassen","dürfen","können","müssen","sollen",
+      "wollen","werden","sein","haben"
     ],
     adjektiv: [
-      'gross','klein','schnell','langsam','laut','leise','hell','dunkel','stark','schwach',
-      'froehlich','traurig','kalt','warm','heiss','kuehl','sauber','schmutzig','alt','neu',
-      'jung','muede','fleissig','faul','freundlich','boese','klug','dumm','ruhig','wild'
+      "groß","klein","schnell","langsam","hell","dunkel","fröhlich","traurig","bunt","rund",
+      "eckig","schwer","leicht","hart","weich","warm","kalt","heiß","kühl","neu",
+      "alt","jung","altmodisch","modern","sauber","schmutzig","ordentlich","unordentlich","laut","leise",
+      "stark","schwach","hoch","niedrig","lang","kurz","breit","schmal","dick","dünn",
+      "voll","leer","reich","arm","teuer","billig","gut","schlecht","richtig","falsch",
+      "einfach","schwierig","sicher","gefährlich","gesund","krank","müde","wach","hungrig","satt",
+      "durstig","nass","trocken","glatt","rau","süß","sauer","salzig","bitter","scharf",
+      "frisch","faul","lebendig","tot","lauter","still","aufgeregt","ruhig","neugierig","gleichgültig",
+      "geduldig","ungeduldig","freundlich","unfreundlich","höflich","unhöflich","fleißig","klug","dumm","mutig",
+      "ängstlich","zufrieden","unzufrieden","glücklich","unglücklich","gelassen"
     ],
     pronomen: [
-      'ich','du','er','sie','es','wir','ihr','sie','mich','dich',
-      'ihn','uns','euch','mir','dir','ihm','ihr','ihnen','mein','dein',
-      'sein','ihr','unser','euer','dieser','jener','man','alle','niemand','jemand'
+      "ich","du","er","sie","es","wir","ihr","mein","dein","sein",
+      "unser","euer","mich","dich","sich","ihn","uns","euch","jemand","niemand",
+      "etwas","nichts","alles","jeder","jede","jedes","mancher","manche","manches","welcher",
+      "welche","welches","dieser","diese","dieses","jener","jene","jenes","derselbe","dieselbe",
+      "dasselbe","solcher","solche","solches","irgendwer","irgendetwas","einiger","einige","einiges","anderer",
+      "andere","anderes"
     ],
     partikel: [
-      'gestern','heute','morgen','oben','unten','drinnen','draussen','hier','dort','ueberall',
-      'immer','nie','oft','selten','bald','gleich','vor','unter','sehr','gern','hinter',
-      'allein','zusammen','manchmal','heraus','hinaus','hinein','fort','zurueck','vorne','hinten'
+      "nicht","auch","noch","schon","immer","oft","vielleicht","gerade","besonders","doch",
+      "denn","ja","nein","ziemlich","recht","ganz","etwas","etwa","fast","beinahe",
+      "eben","genau","wirklich","eigentlich","sogar","selbst","einfach","bloß","nur","erst",
+      "immerhin","jedenfalls","sowieso","trotzdem","deshalb","daher","darum","also","folglich","dennoch",
+      "allerdings","jedoch","aber","oder","und","sondern","beziehungsweise","entweder","weder","ob",
+      "dass","damit","obwohl","wenn","als","wie","weil","da","falls","sobald",
+      "bis","seit","während","bevor","nachdem","indem","ohne","mit","bei","von",
+      "zu","aus","durch","für","gegen","um","an","auf","hinter","neben",
+      "in","über","unter","vor","zwischen","links","rechts","oben","unten","vorne",
+      "hinten","innen","außen","heute","gestern","morgen","jetzt","gleich","später","früher"
     ]
   };
 
   const POS_LABELS = {
-    nomen: 'Nomen',
-    verb: 'Verb',
-    adjektiv: 'Adjektiv',
-    pronomen: 'Pronomen',
-    partikel: 'Partikel'
+    nomen: "Nomen",
+    verb: "Verb",
+    adjektiv: "Adjektiv",
+    pronomen: "Pronomen",
+    partikel: "Partikel"
   };
 
   // --- Zustand ---
@@ -447,8 +478,8 @@
   let timeLeft = 0;
   let timerId = null;
 
-  let currentWord = '';
-  let currentClassKey = '';
+  let currentWord = "";
+  let currentClassKey = "";
 
   let position = 0;      // -4..+4, 0 = Mitte
   let playerPoints = 0;
@@ -460,34 +491,34 @@
   let gameOver = false;
 
   // --- DOM ---
-  const startScreen = document.getElementById('start-screen');
-  const quizScreen = document.getElementById('quiz-screen');
-  const resultScreen = document.getElementById('result-screen');
+  const startScreen = document.getElementById("start-screen");
+  const quizScreen = document.getElementById("quiz-screen");
+  const resultScreen = document.getElementById("result-screen");
 
-  const modeGrid = document.getElementById('mode-grid');
-  const selectedInfo = document.getElementById('selected-info');
-  const startBtn = document.getElementById('start-btn');
+  const modeGrid = document.getElementById("mode-grid");
+  const selectedInfo = document.getElementById("selected-info");
+  const startBtn = document.getElementById("start-btn");
 
-  const modeLabel = document.getElementById('mode-label');
-  const timerDisplay = document.getElementById('timer-display');
-  const wordDisplay = document.getElementById('word-display');
-  const feedbackEl = document.getElementById('feedback');
+  const modeLabel = document.getElementById("mode-label");
+  const timerDisplay = document.getElementById("timer-display");
+  const wordDisplay = document.getElementById("word-display");
+  const feedbackEl = document.getElementById("feedback");
 
-  const statQuestions = document.getElementById('stat-questions');
-  const statCorrect = document.getElementById('stat-correct');
-  const statWrong = document.getElementById('stat-wrong');
-  const statPlayer = document.getElementById('stat-player');
-  const statPc = document.getElementById('stat-pc');
-  const scoreText = document.getElementById('score-text');
-  const trackEl = document.getElementById('track');
-  const arenaWrapper = document.getElementById('arena-wrapper');
+  const statQuestions = document.getElementById("stat-questions");
+  const statCorrect = document.getElementById("stat-correct");
+  const statWrong = document.getElementById("stat-wrong");
+  const statPlayer = document.getElementById("stat-player");
+  const statPc = document.getElementById("stat-pc");
+  const scoreText = document.getElementById("score-text");
+  const trackEl = document.getElementById("track");
+  const arenaWrapper = document.getElementById("arena-wrapper");
 
-  const resultTitle = document.getElementById('result-title');
-  const resultSummary = document.getElementById('result-summary');
-  const finishBtn = document.getElementById('finish-btn');
-  const againBtn = document.getElementById('again-btn');
+  const resultTitle = document.getElementById("result-title");
+  const resultSummary = document.getElementById("result-summary");
+  const finishBtn = document.getElementById("finish-btn");
+  const againBtn = document.getElementById("again-btn");
 
-  const posButtons = document.querySelectorAll('.pos-btn');
+  const posButtons = document.querySelectorAll(".pos-btn");
 
   // --- Audio-Helfer ---
   function playSound(id) {
@@ -497,17 +528,30 @@
       el.currentTime = 0;
       el.play().catch(() => {});
     } catch (e) {
-      console.warn('Audio-Fehler:', e);
+      console.warn("Audio-Fehler:", e);
     }
   }
 
+  // --- Anzeige-Helfer: technische Schreibweise -> Anzeige für Kinder ---
+  function displayWord(raw) {
+    if (!raw) return "";
+    let w = raw;
+    // ae/oe/ue → ä/ö/ü, falls technisch so gespeichert
+    w = w.replace(/ae/g, "ä")
+         .replace(/oe/g, "ö")
+         .replace(/ue/g, "ü");
+    // Schweizer Schreibweise: ß → ss
+    w = w.replace(/ß/g, "ss");
+    return w;
+  }
+
   // --- Modus-Auswahl ---
-  modeGrid.querySelectorAll('.mode-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
+  modeGrid.querySelectorAll(".mode-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
       const m = btn.dataset.mode;
       selectedMode = (selectedMode === m) ? null : m;
-      modeGrid.querySelectorAll('.mode-btn').forEach(b => {
-        b.classList.toggle('selected', b.dataset.mode === selectedMode);
+      modeGrid.querySelectorAll(".mode-btn").forEach(b => {
+        b.classList.toggle("selected", b.dataset.mode === selectedMode);
       });
       updateStartState();
     });
@@ -515,28 +559,28 @@
 
   function updateStartState() {
     if (!selectedMode) {
-      selectedInfo.textContent = 'Bitte einen Modus auswählen.';
+      selectedInfo.textContent = "Bitte einen Modus auswählen.";
       startBtn.disabled = true;
       return;
     }
-    let modeText = '';
-    if (selectedMode === 'training') {
-      modeText = 'Training ohne Timer und ohne Wettkampf';
-    } else if (selectedMode === 't3') {
-      modeText = 'Wettkampf mit 3 Sekunden pro Wort';
-    } else if (selectedMode === 't5') {
-      modeText = 'Wettkampf mit 5 Sekunden pro Wort';
-    } else if (selectedMode === 't10') {
-      modeText = 'Wettkampf mit 10 Sekunden pro Wort';
+    let modeText = "";
+    if (selectedMode === "training") {
+      modeText = "Training ohne Timer und ohne Wettkampf";
+    } else if (selectedMode === "t3") {
+      modeText = "Wettkampf mit 3 Sekunden pro Wort";
+    } else if (selectedMode === "t5") {
+      modeText = "Wettkampf mit 5 Sekunden pro Wort";
+    } else if (selectedMode === "t10") {
+      modeText = "Wettkampf mit 10 Sekunden pro Wort";
     }
     selectedInfo.textContent = modeText;
     startBtn.disabled = false;
   }
 
-  startBtn.addEventListener('click', startGame);
+  startBtn.addEventListener("click", startGame);
 
   function startGame() {
-    isTrainingMode = (selectedMode === 'training');
+    isTrainingMode = (selectedMode === "training");
     gameOver = false;
 
     questionsCount = 0;
@@ -547,31 +591,30 @@
     pcPoints = 0;
 
     if (isTrainingMode) {
-      arenaWrapper.classList.add('hidden');
-      timerDisplay.textContent = 'Kein Timer (Training)';
+      arenaWrapper.classList.add("hidden");
+      timerDisplay.textContent = "Kein Timer (Training)";
     } else {
-      arenaWrapper.classList.remove('hidden');
-      const limit = TIME_LIMITS[selectedMode] || 10;
-      timeLimit = limit;
+      arenaWrapper.classList.remove("hidden");
+      timeLimit = TIME_LIMITS[selectedMode] || 10;
     }
 
     updateStats();
     buildTrack();
     updateTrack();
 
-    feedbackEl.textContent = '';
-    feedbackEl.className = 'feedback';
+    feedbackEl.textContent = "";
+    feedbackEl.className = "feedback";
 
-    let modeText = '';
-    if (isTrainingMode) modeText = 'Training: Wortarten ohne Timer';
-    else if (selectedMode === 't3') modeText = 'Wettkampf: 3 Sekunden pro Wort';
-    else if (selectedMode === 't5') modeText = 'Wettkampf: 5 Sekunden pro Wort';
-    else if (selectedMode === 't10') modeText = 'Wettkampf: 10 Sekunden pro Wort';
+    let modeText = "";
+    if (isTrainingMode) modeText = "Training: Wortarten ohne Timer";
+    else if (selectedMode === "t3") modeText = "Wettkampf: 3 Sekunden pro Wort";
+    else if (selectedMode === "t5") modeText = "Wettkampf: 5 Sekunden pro Wort";
+    else if (selectedMode === "t10") modeText = "Wettkampf: 10 Sekunden pro Wort";
     modeLabel.textContent = modeText;
 
-    startScreen.classList.add('hidden');
-    resultScreen.classList.add('hidden');
-    quizScreen.classList.remove('hidden');
+    startScreen.classList.add("hidden");
+    resultScreen.classList.add("hidden");
+    quizScreen.classList.remove("hidden");
 
     nextQuestion();
   }
@@ -595,8 +638,8 @@
   function nextQuestion() {
     if (gameOver) return;
 
-    feedbackEl.textContent = '';
-    feedbackEl.className = 'feedback';
+    feedbackEl.textContent = "";
+    feedbackEl.className = "feedback";
 
     const clsKey = pickRandomClassKey();
     const word = pickRandomWordFromClass(clsKey);
@@ -604,7 +647,8 @@
     currentClassKey = clsKey;
     currentWord = word;
 
-    wordDisplay.textContent = currentWord;
+    // Anzeige immer mit Umlauten / Schweizer-ss
+    wordDisplay.textContent = displayWord(currentWord);
 
     if (!isTrainingMode) {
       resetTimer();
@@ -630,35 +674,35 @@
 
   function updateTimerUI() {
     if (isTrainingMode) {
-      timerDisplay.textContent = 'Kein Timer (Training)';
-      timerDisplay.classList.remove('low');
+      timerDisplay.textContent = "Kein Timer (Training)";
+      timerDisplay.classList.remove("low");
       return;
     }
     timerDisplay.textContent = `Restzeit: ${timeLeft}s`;
-    timerDisplay.classList.toggle('low', timeLeft <= 2);
+    timerDisplay.classList.toggle("low", timeLeft <= 2);
   }
 
   // --- Arena / Marker ---
   function buildTrack() {
-    trackEl.innerHTML = '';
+    trackEl.innerHTML = "";
     for (let i = 0; i < 9; i++) {
-      const cell = document.createElement('div');
-      cell.className = 'track-cell';
-      if (i === 4) cell.classList.add('mid');
+      const cell = document.createElement("div");
+      cell.className = "track-cell";
+      if (i === 4) cell.classList.add("mid");
       trackEl.appendChild(cell);
     }
   }
 
   function updateTrack() {
-    const cells = trackEl.querySelectorAll('.track-cell');
+    const cells = trackEl.querySelectorAll(".track-cell");
     cells.forEach(c => {
-      const marker = c.querySelector('.marker');
+      const marker = c.querySelector(".marker");
       if (marker) c.removeChild(marker);
     });
     const idx = position + 4; // -4..+4 -> 0..8
     if (idx >= 0 && idx < cells.length) {
-      const marker = document.createElement('div');
-      marker.className = 'marker';
+      const marker = document.createElement("div");
+      marker.className = "marker";
       cells[idx].appendChild(marker);
     }
     scoreText.textContent = `${playerPoints} : ${pcPoints}`;
@@ -674,8 +718,8 @@
 
   // --- Antwort-Handling ---
   posButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const pos = btn.getAttribute('data-pos');
+    btn.addEventListener("click", () => {
+      const pos = btn.getAttribute("data-pos");
       handleAnswer(pos, false);
     });
   });
@@ -694,18 +738,16 @@
 
     if (isCorrect) {
       correctCount++;
-      feedbackEl.textContent = 'Richtig! 👍';
-      feedbackEl.className = 'feedback ok';
-      // richtig → correct.wav
-      playSound('sound-correct');
+      feedbackEl.textContent = "Richtig! 👍";
+      feedbackEl.className = "feedback ok";
+      playSound("sound-correct");
     } else {
       wrongCount++;
       feedbackEl.textContent = isTimeout
-        ? 'Zeit abgelaufen – das war leider falsch.'
-        : 'Leider falsch.';
-      feedbackEl.className = 'feedback error';
-      // falsch/Timeout → error.wav
-      playSound('sound-error');
+        ? "Zeit abgelaufen – das war leider falsch."
+        : "Leider falsch.";
+      feedbackEl.className = "feedback error";
+      playSound("sound-error");
     }
 
     if (isTrainingMode) {
@@ -727,17 +769,15 @@
     if (position >= STEP_WIN) {
       playerPoints++;
       position = 0;
-      feedbackEl.textContent += ' Du gewinnst eine Runde!';
-      feedbackEl.className = 'feedback ok';
-      // Runde für Schüler
-      playSound('sound-roundwon');
+      feedbackEl.textContent += " Du gewinnst eine Runde!";
+      feedbackEl.className = "feedback ok";
+      playSound("sound-roundwon");
     } else if (position <= -STEP_WIN) {
       pcPoints++;
       position = 0;
-      feedbackEl.textContent += ' Der Roboter gewinnt eine Runde.';
-      feedbackEl.className = 'feedback error';
-      // Runde für Roboter
-      playSound('sound-roundlost');
+      feedbackEl.textContent += " Der Roboter gewinnt eine Runde.";
+      feedbackEl.className = "feedback error";
+      playSound("sound-roundlost");
     }
 
     updateTrack();
@@ -756,20 +796,19 @@
     gameOver = true;
     if (timerId) clearInterval(timerId);
 
-    quizScreen.classList.add('hidden');
-    resultScreen.classList.remove('hidden');
+    quizScreen.classList.add("hidden");
+    resultScreen.classList.remove("hidden");
 
     const win = playerPoints > pcPoints;
     if (win) {
-      resultTitle.textContent = 'Sieg im Wortarten-Kampf! 🎉';
-      // gamewon + youwon
-      playSound('sound-gamewon');
+      resultTitle.textContent = "Sieg im Wortarten-Kampf! 🎉";
+      playSound("sound-gamewon");
       setTimeout(() => {
-        playSound('sound-youwon');
+        playSound("sound-youwon");
       }, 700);
     } else {
-      resultTitle.textContent = 'Der Roboter gewinnt 😕';
-      playSound('sound-gamelost');
+      resultTitle.textContent = "Der Roboter gewinnt 😕";
+      playSound("sound-gamelost");
     }
 
     resultSummary.innerHTML =
@@ -778,25 +817,25 @@
       `Wettkampf-Punkte: <strong>Du ${playerPoints}</strong> – <strong>Roboter ${pcPoints}</strong>.`;
 
     finishBtn.disabled = false;
-    finishBtn.textContent = 'Fertig';
+    finishBtn.textContent = "Fertig";
   }
 
   // LearningView-Feedback nur nach Wettkampf
-  finishBtn.addEventListener('click', () => {
+  finishBtn.addEventListener("click", () => {
     finishBtn.disabled = true;
-    finishBtn.textContent = 'Erledigt ✔';
+    finishBtn.textContent = "Erledigt ✔";
     try {
       if (window.parent && window.parent !== window) {
-        window.parent.postMessage('AppSolved', '*');
+        window.parent.postMessage("AppSolved", "*");
       }
     } catch (e) {
-      console.warn('LearningView-AppSolved nicht möglich:', e);
+      console.warn("LearningView-AppSolved nicht möglich:", e);
     }
   });
 
-  againBtn.addEventListener('click', () => {
-    resultScreen.classList.add('hidden');
-    startScreen.classList.remove('hidden');
+  againBtn.addEventListener("click", () => {
+    resultScreen.classList.add("hidden");
+    startScreen.classList.remove("hidden");
   });
 
   // --- Init ---
