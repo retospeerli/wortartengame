@@ -174,15 +174,48 @@
                   border-color 0.15s ease, box-shadow 0.15s ease;
       text-align: center;
       word-break: break-word;
-    }
-    .pos-btn:hover {
-      background: #e5e7eb;
-      border-color: #9ca3af;
+      color: #111827;
     }
     .pos-btn:active {
       transform: translateY(1px);
       box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     }
+
+    /* Wortarten-Farben */
+    .pos-btn.nomen {
+      background: #b5651d; /* Braun */
+      border-color: #8a4b14;
+      color: #fff;
+    }
+    .pos-btn.nomen:hover { background: #a05719; }
+
+    .pos-btn.verb {
+      background: #2563eb; /* Blau */
+      border-color: #1d4ed8;
+      color: #fff;
+    }
+    .pos-btn.verb:hover { background: #1d4ed8; }
+
+    .pos-btn.adjektiv {
+      background: #facc15; /* Gelb */
+      border-color: #eab308;
+      color: #111;
+    }
+    .pos-btn.adjektiv:hover { background: #eab308; }
+
+    .pos-btn.pronomen {
+      background: #f97316; /* Orange */
+      border-color: #ea580c;
+      color: #fff;
+    }
+    .pos-btn.pronomen:hover { background: #ea580c; }
+
+    .pos-btn.partikel {
+      background: #22c55e; /* Grün */
+      border-color: #16a34a;
+      color: #fff;
+    }
+    .pos-btn.partikel:hover { background: #16a34a; }
 
     .feedback {
       min-height: 1.4rem;
@@ -265,7 +298,7 @@
 <div class="app">
   <h1>Wortarten – Trainingskampf</h1>
   <div class="subtitle">
-    Bestimme die Wortart: Nomen, Verb, Adjektiv, Pronomen oder Adverb.<br>
+    Bestimme die Wortart: Nomen, Verb, Adjektiv, Pronomen oder Partikel.<br>
     Entweder im Trainingsmodus oder als Wettkampf gegen den Roboter.
   </div>
 
@@ -302,11 +335,11 @@
     <div class="tagline">Klicke die passende Wortart an.</div>
 
     <div class="pos-grid">
-      <button type="button" class="pos-btn" data-pos="nomen">Nomen</button>
-      <button type="button" class="pos-btn" data-pos="verb">Verb</button>
-      <button type="button" class="pos-btn" data-pos="adjektiv">Adjektiv</button>
-      <button type="button" class="pos-btn" data-pos="pronomen">Pronomen</button>
-      <button type="button" class="pos-btn" data-pos="adverb">Adverb</button>
+      <button type="button" class="pos-btn nomen"    data-pos="nomen">Nomen</button>
+      <button type="button" class="pos-btn verb"     data-pos="verb">Verb</button>
+      <button type="button" class="pos-btn adjektiv" data-pos="adjektiv">Adjektiv</button>
+      <button type="button" class="pos-btn pronomen" data-pos="pronomen">Pronomen</button>
+      <button type="button" class="pos-btn partikel" data-pos="partikel">Partikel</button>
     </div>
 
     <div class="feedback" id="feedback"></div>
@@ -391,10 +424,10 @@
       'ihn','uns','euch','mir','dir','ihm','ihr','ihnen','mein','dein',
       'sein','ihr','unser','euer','dieser','jener','man','alle','niemand','jemand'
     ],
-    adverb: [
+    partikel: [
       'gestern','heute','morgen','oben','unten','drinnen','draussen','hier','dort','ueberall',
-      'immer','nie','oft','selten','bald','gleich','lange','kurz','sehr','gern',
-      'allein','zusammen','frueh','spaet','hinaus','hinein','fort','zurueck','vorne','hinten'
+      'immer','nie','oft','selten','bald','gleich','vor','unter','sehr','gern','hinter',
+      'allein','zusammen','manchmal','heraus','hinaus','hinein','fort','zurueck','vorne','hinten'
     ]
   };
 
@@ -403,7 +436,7 @@
     verb: 'Verb',
     adjektiv: 'Adjektiv',
     pronomen: 'Pronomen',
-    adverb: 'Adverb'
+    partikel: 'Partikel'
   };
 
   // --- Zustand ---
@@ -549,7 +582,7 @@
   }
 
   function pickRandomClassKey() {
-    const keys = Object.keys(WORDS); // nomen, verb, adjektiv, pronomen, adverb
+    const keys = Object.keys(WORDS); // nomen, verb, adjektiv, pronomen, partikel
     return keys[randInt(0, keys.length - 1)];
   }
 
