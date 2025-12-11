@@ -402,7 +402,7 @@
     t10: 10
   };
 
-  // Zentraler Wortschatz (neue Listen, Doppler entfernt)
+  // Zentraler Wortschatz
   const WORDS = {
     nomen: [
       "haus","baum","mutter","vater","kind","schule","buch","stift","tisch","fenster",
@@ -421,7 +421,7 @@
       "fragen","antworten","kommen","laufen","rennen","stehen","sitzen","liegen","schlafen","träumen",
       "essen","trinken","kochen","backen","waschen","putzen","räumen","bauen","basteln","zeichnen",
       "rechnen","zählen","singen","tanzen","musizieren","pfeifen","klatschen","winken","zeigen","geben",
-      "nehmen","halten","tragen","bringen","holen","kaufen","verkaufen","bezahlen","öffnen","schließen",
+      "nehmen","halten","tragen","bringen","holen","kaufen","verkaufen","bezahlen","öffnen","schliessen",
       "drücken","ziehen","schieben","heben","senken","drehen","biegen","brechen","reparieren","arbeiten",
       "lernen","lehren","helfen","stören","warten","suchen","finden","verlieren","gewinnen","verstecken",
       "entdecken","denken","glauben","wissen","kennen","verstehen","erklären","erzählen","versprechen","vergessen",
@@ -489,6 +489,7 @@
   let wrongCount = 0;
 
   let gameOver = false;
+  let isAnswerLocked = false; // NEU: nur ein Klick pro Wort
 
   // --- DOM ---
   const startScreen = document.getElementById("start-screen");
@@ -536,11 +537,8 @@
   function displayWord(raw) {
     if (!raw) return "";
     let w = raw;
-    // ae/oe/ue → ä/ö/ü, falls technisch so gespeichert
     w = w.replace(/ae/g, "ä")
-         .replace(/oe/g, "ö")
-    //   .replace(/ue/g, "ü");
-    // Schweizer Schreibweise: ß → ss
+         .replace(/oe/g, "ö");
     w = w.replace(/ß/g, "ss");
     return w;
   }
@@ -589,6 +587,7 @@
     position = 0;
     playerPoints = 0;
     pcPoints = 0;
+    isAnswerLocked = false;
 
     if (isTrainingMode) {
       arenaWrapper.classList.add("hidden");
@@ -625,7 +624,7 @@
   }
 
   function pickRandomClassKey() {
-    const keys = Object.keys(WORDS); // nomen, verb, adjektiv, pronomen, partikel
+    const keys = Object.keys(WORDS);
     return keys[randInt(0, keys.length - 1)];
   }
 
@@ -647,11 +646,16 @@
     currentClassKey = clsKey;
     currentWord = word;
 
-    // Anzeige immer mit Umlauten / Schweizer-ss
     wordDisplay.textContent = displayWord(currentWord);
+
+    // NEU: Buttons wieder freigeben
+    isAnswerLocked = false;
+    posButtons.forEach(btn => btn.disabled = false);
 
     if (!isTrainingMode) {
       resetTimer();
+    } else {
+      timerDisplay.textContent = "Kein Timer (Training)";
     }
   }
 
@@ -667,7 +671,7 @@
       if (timeLeft <= 0) {
         clearInterval(timerId);
         timerId = null;
-        handleAnswer(null, true); // Timeout
+        handleAnswer(null, true);
       }
     }, 1000);
   }
@@ -699,7 +703,7 @@
       const marker = c.querySelector(".marker");
       if (marker) c.removeChild(marker);
     });
-    const idx = position + 4; // -4..+4 -> 0..8
+    const idx = position + 4;
     if (idx >= 0 && idx < cells.length) {
       const marker = document.createElement("div");
       marker.className = "marker";
@@ -726,6 +730,9 @@
 
   function handleAnswer(chosenPos, isTimeout) {
     if (gameOver) return;
+    if (isAnswerLocked) return;      // NEU: Mehrfachklicks ignorieren
+    isAnswerLocked = true;
+    posButtons.forEach(btn => btn.disabled = true);
 
     if (!isTrainingMode && timerId) {
       clearInterval(timerId);
@@ -765,7 +772,6 @@
       position = Math.max(position - 1, -STEP_WIN);
     }
 
-    // Punkt gewonnen?
     if (position >= STEP_WIN) {
       playerPoints++;
       position = 0;
