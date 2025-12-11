@@ -539,7 +539,7 @@
     // ae/oe/ue → ä/ö/ü, falls technisch so gespeichert
     w = w.replace(/ae/g, "ä")
          .replace(/oe/g, "ö")
-         .replace(/ue/g, "ü");
+    //   .replace(/ue/g, "ü");
     // Schweizer Schreibweise: ß → ss
     w = w.replace(/ß/g, "ss");
     return w;
